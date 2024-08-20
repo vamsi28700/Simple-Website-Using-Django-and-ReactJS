@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Simple Website using Django and React.js Coding Assessment - Krishna Vamsi Kurumaddali
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is divided into two parts which is the simultaneous implementation of **Django** and **React.js** applications.
 
-## Available Scripts
+## Prerequisites 
+- **Node.js** and **npm** installed 
+- **Python** installed
 
-In the project directory, you can run:
+## Getting Started 
+### 1. Setting Up the React App Open the first terminal and execute the following commands:
+```bash 
+ npx create-react-app simple-website
+ cd simple-website
+```
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Setting Up the Django Backend In the second terminal, navigate to the `simple-website` directory and set up a virtual environment:
+```bash 
+python -m venv simweb_env
+```
+ - Activate the virtual environment:
+```bash 
+simweb_env\Scripts\activate
+```
+ - Install Django and `django-cors-headers`
+```bash
+pip install django
+pip install django-cors-headers
+```
+- Creating Django Project
+```bash
+django-admin startproject simwebbackend
+cd simwebbackend
+```
+- Starting the Django App
+In the second terminal, run the following command to start the Django server:
+```bash
+python manage.py startapp api
+```
+### 3. Running the Django App Server
+In the second terminal, run the following command to start the Django server:
+```bash
+python manage.py runserver
+```
+The server can be accessed by clicking the link provided in the terminal.
+### 4. Running the React.js App
+```bash
+npm start
+```
+The application will automatically open in your default web browser. If not, you can Ctrl + click the link provided in the terminal to access the application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Ouputs Rendered
+### React Application Output
+![alt text](./images/image.png)
 
-### `npm test`
+### Django Application Output
+![alt text](./images/image-1.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## To view the information passed using API to the react application can be done as follows
 
-### `npm run build`
+- Use this url to access that as follows: 
+```bash 
+http://127.0.0.1:8000/api/get-data/ 
+```
+![alt text](./images/image-2.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## AWS 3-Tire Architecture for Simple Website
+### 1. Presentation Tier 
+- This tier consists mostly frontend technologies like Amazon S3 for hosting **react.js** front end files like **HTML**, **CSS**, **JavaScript**.
+- Amazon CloudFront for CDN (Content Delivery Network) which helps in caching react.js static files for fast accessing by globalizing.
+- Amazon Route 53 helps in in routing the website domain and traffic distribution to cloudfront.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Application Tier 
+- Elastic Load Balancer helps in optimizing the distribution of incoming traffic across multiple Django application servers which run on EC2 instances.
+- Amazon EC2 instances host the Django backend application where there are multiple servers for scalability and redundancy.
+- Amazon RDS here helps in application data storage like user credentials and so on.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Data Tier 
+- Here, Amazon S3 is used to store static assets like media files and other complex data.
+- Again the use of Amazon RDS is done so to manage the relational database for Django backend.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 3-Tier AWS Architecture Flow Diagram
+![alt text](./images/AWS-architecture.jpg)
