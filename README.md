@@ -1,4 +1,4 @@
-# Simple Website using Django and React.js Coding Assessment - Krishna Vamsi Kurumaddali
+# Django & React.js Web Application with API Data Flow and AWS Scalability Proposal 
 
 This project is divided into two parts which is the simultaneous implementation of **Django** and **React.js** applications.
 
